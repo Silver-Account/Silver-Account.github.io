@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a192f">
+
+    <title>About - Tanmoy Nandi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Modern and Clean Design */
+        :root {
+            --primary-color: #2d333b;
+            --secondary-color: #22272e;
+            --accent-color: #539bf5;
+            --text-color: #adbac7;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .experience-card {
+            background: rgba(17, 34, 64, 0.7);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+        }
+
+        .experience-card:hover::before {
+            opacity: 1;
+        }
+        .education-card {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .education-card:hover:hover {
+            transform: translateY(-5px);
+        }
+
+        
+        .date {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-section {
+            margin-top: 4rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: rgba(17, 34, 64, 0.7);
+            padding: 0.8rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            background: var(--secondary-color);
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .achievement-card {
+            background: rgba(17, 34, 64, 0.7);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-color);
+        }
+
+
+        /* Scroll bar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-color);
+        }
+
+        .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.contact-card {
+    background: rgba(17, 34, 64, 0.7);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+}
+
+.contact-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(100, 255, 218, 0.1);
+}
+
+.contact-icon i {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.contact-card h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.contact-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: gap 0.3s ease;
+}
+
+.contact-link:hover {
+    gap: 1rem;
+}
+
+.contact-link i {
+    font-size: 0.9rem;
+}
+
+/* Modern color scheme */
+:root {
+    --primary-color: #0a192f;
+    --secondary-color: #112240;
+    --accent-color: #64ffda;
+    --text-primary: #ccd6f6;
+    --text-secondary: #8892b0;
+    --gradient-start: #0a192f;
+    --gradient-end: #112240;
+}
+
+/* Animated background */
+body {
+    background: linear-gradient(-45deg, var(--gradient-start), var(--gradient-end));
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating animation for cards */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Enhanced header */
+header {
+    background: rgba(10, 25, 47, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    background: linear-gradient(120deg, var(--text-primary), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.5rem;
+}
+
+/* Enhanced navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+nav a {
+    position: relative;
+    padding: 0.5rem 1rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Enhanced cards */
+.education-card, .certification-card {
+    background: rgba(17, 34, 64, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.education-card::before, .certification-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(100, 255, 218, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.education-card:hover::before, .certification-card:hover::before {
+    opacity: 1;
+}
+
+/* Enhanced section titles */
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    background: var(--accent-color);
+}
+
+/* Glowing effect */
+.glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    filter: blur(100px);
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.glow-1 { top: -250px; right: -250px; }
+.glow-2 { bottom: -250px; left: -250px; }
+
+/* Enhanced contact section */
+.contact-card {
+    background: rgba(17, 34, 64, 0.8);
+    backdrop-filter: blur(10px);
+    animation: float 6s ease-in-out infinite;
+}
+
+.contact-icon {
+    background: linear-gradient(45deg, rgba(100, 255, 218, 0.1), rgba(100, 255, 218, 0.2));
+}
+
+/* Scroll reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.map-wrapper {
+    width: 300px; /* Adjust this value to make it smaller or larger */
+    height: 300px; /* Adjust this value to make it smaller or larger */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.map-wrapper > div {
+    transform: scale(0.8); /* Adjust this value between 0 and 1 to scale the widget */
+    transform-origin: center center;
+}
+
+.visitor-map-container {
+    margin: 2rem auto;
+    padding: 1rem;
+    background: rgba(17, 34, 64, 0.7);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    width: fit-content;
+}
+
+    </style>
+
+    
+</head>
+<body>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="animated-bg"></div>
+
+    <header>
+        <nav>
+            <a href="./">Home</a>
+            <a href="./about" class="active">About</a>
+            <a href="./projects">Projects</a>
+         </nav>
+         <h1>Tanmoy Nandi</h1>
+        <p>Quantum Computing and Quantum Materials Researcher</p>
+    </header>
+
+    <div class="container">
+        <section class="intro-section">
+            <h1>Objective</h1>
+            <p>I am a self-motivated and focused student wishing to learn actively, gain knowledge in the field of quantum computing &
+                quantum materials and make meaningful contributions to the advancement of these interdisciplinary domains. With a strong
+                foundation in Mathematics, Physics and programming languages such as Python, I am excited to apply my skills in research.
+                I am open to work with team of researchers and industry experts in exploring the potential of quantum technology and to
+                gain valuable experiences.</p>
+        </section>
+
+                <!-- Rest of the content structure remains the same but with enhanced styling -->
+        <!-- Add your sections here using the new card and grid styles -->
+    </div>
+    <div class="container">
+    <section id="experience">
+        <h2 class="section-title">Work Experience</h2>
+        <div>
+        <div class="education-card">
+            <div class="date">11/23 - 10/24</div>
+            <h3>Junior Research Fellow</h3>
+            <p>Department of Electrical Engineering, IIT Indore</p>
+            <p>Explored application of small-scale quantum machine learning models in communication networks to address resource allocation problems in NOMA scheme.</p>
+        </div>
+
+        <div class="education-card">
+            <div class="date">07/24 - 08/24</div>
+            <h3>Quantum Machine Learning for Conspicuity Detection in Production</h3>
+            <p>Constructed Quanvolutional Neural Network model for MNIST dataset</p>
+            <p>Implemented a version of LeNet-5 and its extension to a Hybrid Quantum Machine Learning model to detect
+                a defective production consisting of total six types, good weld and five defect weld types, using an Aluminium 5083 TIG
+                Dataset, achieving 100% defect detection accuracy in both cases.</p>
+                
+            </div>
+    </div>
+        <!-- Add other experiences similarly -->
+    </section>
+    </div>
+    <div class="container">
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="education-card">
+            <h3>M.Sc. Physics</h3>
+            <p>Rajabazar Science College, Department of Physics, University of Calcutta</p>
+            <div class="date">10/21 - 09/23</div>
+            <p>CGPA: 6.35, Percentage: 63.5%, Grade: B+ (Remarks: Good) 1st Class</p>
+            <p>Relevant courses: Condensed Matter Physics, Quantum Mechanics I & II, Algebra, Discrete Mathematics and Analysis</p>
+            <p><strong>Master's Project: Zinc Oxide Nanocrystals Under Annealing at Different Temperatures</strong> </p>
+            <p> <strong>Abstract</strong> We present here the results of studies on the structure and bonding of Zinc Oxide (ZnO)
+                nanocrystals prepared by co-precipitation method at different annealing temperatures varying
+                from as prepared to 600◦C. We have used X-ray diffraction (XRD) for structural studies and
+                Raman spectroscopy (micro-Raman) for study of bonding. The quality of crystal is found to be
+                excellent and the ordering is steadily enhanced with annealing temperature. There is shrinkage
+                of unit cell volume with temperature, the volume reaching minimum at 500◦C, with preferred
+                shrinking normal to the c-axis and c/a ratio reaching its maximum at the same temperature.
+                Raman spectra indicates a flip in the intensity of the Zn-Zn and O-O bonds normal to the c-axis
+                corresponding to an ordering of the O-sublattice at 500◦C. Concurrently there is a transition
+                from bulk defects to surface defects and a change from local to global ordering.</p>
+        </div>
+         <div class="education-card">
+                <h3>B.Sc. (Honours) in Physics</h3>
+                <p>Serampore College (Affliated to University of Calcutta)</p>
+                <div class="date">10/21 - 09/23</div>
+                <p>CGPA: 8.509, Percentage: 85.88%, Grade: A+ (Remarks: Excellent) 1st Class</p>
+                <p>Relevant courses: Quantum Mechanics and Applications, Advanced Statistical Mechanics, Mathematical Physics I, II, III.</p>
+                
+        </div>
+            <!-- Add other education details similarly -->
+        </section>
+        </div>
+    <div class="container">
+        <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-tag">Python</div>
+            <div class="skill-tag">Qiskit</div>
+            <div class="skill-tag">Cirq</div>
+            <div class="skill-tag">PennyLane</div>
+            <div class="skill-tag">PyTorch</div>
+            <div class="skill-tag">TensorFlow</div>
+            <div class="skill-tag">LaTeX</div>
+            <div class="skill-tag">Github</div>
+        
+        </div>
+    </section>
+    </div>
+    <div class="container">
+    <section id="achievements">
+        <h2 class="section-title">Scholarships</h2>
+        <div class="certification-card">
+            <h3>DST-INSPIRE SHE Scholarship</h3>
+            <div class="date">2018 - 2023</div>
+            <p>Awarded by Department of Science and Technology, Govt. of India for being in top 1% of higher secondary education in basic sciences discipline.</p>
+        </div>
+    </section>
+    </div>
+    <div class="container">
+        <section id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="contact-intro">Feel free to reach out to me through any of these platforms</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>Check out my open-source projects</p>
+                    <a href="https://github.com/Silver-Account" target="_blank" class="contact-link">
+                        View Profile <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+    
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p>Connect with me professionally</p>
+                    <a href="https://linkedin.com/in/tanmoy-nandi" target="_blank" class="contact-link">
+                        Connect <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+    
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>Send me a message directly</p>
+                    <a href="mailto:tanmoynandi.acad.2023@gmail.com" class="contact-link">
+                        Send Email <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="container">
+    <section id="visitors" class="reveal">
+        <h2 class="section-title">Visitors Map</h2>
+        <div class="visitor-map-container">
+            <div class="map-wrapper">
+                <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=kxZ_c-CYz-01o-SHJwjZgGQDVhF1hEwc2lMadNWgGLw"></script>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div>
+<footer>
+    <p>&copy; 2025 Tanmoy Nandi. All rights reserved.</p>
+</footer>
+</div>
+</body>
+
+<script>
+// Scroll reveal animation
+function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    
+    reveals.forEach(element => {
+        var windowHeight = window.innerHeight;
+        var elementTop = element.getBoundingClientRect().top;
+        var elementVisible = 150;
+        
+        if (elementTop < windowHeight - elementVisible) {
+            element.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", reveal);
+
+// Add reveal class to sections
+document.querySelectorAll('section').forEach(section => {
+    section.classList.add('reveal');
+});
+
+// Cursor glow effect
+document.addEventListener('mousemove', (e) => {
+    const glow = document.querySelector('.glow-1');
+    glow.style.left = e.pageX + 'px';
+    glow.style.top = e.pageY + 'px';
+});
+</script>
+</html>
