@@ -427,7 +427,33 @@ nav a:hover::after {
     transform: translateY(0);
 }
 
+.map-wrapper {
+    width: 300px; /* Adjust this value to make it smaller or larger */
+    height: 300px; /* Adjust this value to make it smaller or larger */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.map-wrapper > div {
+    transform: scale(0.8); /* Adjust this value between 0 and 1 to scale the widget */
+    transform-origin: center center;
+}
+
+.visitor-map-container {
+    margin: 2rem auto;
+    padding: 1rem;
+    background: rgba(17, 34, 64, 0.7);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    width: fit-content;
+}
+
     </style>
+
+    
 </head>
 <body>
     <div class="glow glow-1"></div>
@@ -581,6 +607,18 @@ nav a:hover::after {
         </section>
     </div>
 </div>
+
+<div class="container">
+    <section id="visitors" class="reveal">
+        <h2 class="section-title">Visitors Map</h2>
+        <div class="visitor-map-container">
+            <div class="map-wrapper">
+                <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=kxZ_c-CYz-01o-SHJwjZgGQDVhF1hEwc2lMadNWgGLw"></script>
+            </div>
+        </div>
+    </section>
+</div>
+
 <div>
 <footer>
     <p>&copy; 2025 Tanmoy Nandi. All rights reserved.</p>
