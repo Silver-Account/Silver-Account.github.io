@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a192f">
+
+    <title>Tanmoy Nandi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Modern and Clean Design */
+      :root {
+            --primary-color: #2d333b;
+            --secondary-color: #22272e;
+            --accent-color: #539bf5;
+            --text-color: #adbac7;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .experience-card {
+            background: rgba(17, 34, 64, 0.7);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+        }
+
+        .experience-card:hover::before {
+            opacity: 1;
+        }
+        .education-card {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .education-card:hover:hover {
+            transform: translateY(-5px);
+        }
+
+        
+        .date {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-section {
+            margin-top: 4rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: rgba(17, 34, 64, 0.7);
+            padding: 0.8rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            background: var(--secondary-color);
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .research-interest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .research-interest-tag {
+            background: rgba(17, 34, 64, 0.7);
+            padding: 0.8rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            cursor: pointer;
+        }
+
+        .research-interest-tag:hover {
+            background: var(--secondary-color);
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .achievement-card {
+            background: rgba(17, 34, 64, 0.7);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-color);
+        }
+
+
+        /* Scroll bar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-color);
+        }
+
+        .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.contact-card {
+    background: rgba(17, 34, 64, 0.7);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+}
+
+.contact-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(100, 255, 218, 0.1);
+}
+
+.contact-icon i {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.contact-card h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.contact-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: gap 0.3s ease;
+}
+
+.contact-link:hover {
+    gap: 1rem;
+}
+
+.contact-link i {
+    font-size: 0.9rem;
+}
+
+/* Modern color scheme */
+:root {
+    --primary-color: #0a192f;
+    --secondary-color: #112240;
+    --accent-color: #64ffda;
+    --text-primary: #ccd6f6;
+    --text-secondary: #8892b0;
+    --gradient-start: #0a192f;
+    --gradient-end: #112240;
+}
+
+/* Animated background */
+body {
+    background: linear-gradient(-45deg, var(--gradient-start), var(--gradient-end));
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating animation for cards */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Enhanced header */
+header {
+    background: rgba(10, 25, 47, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    background: linear-gradient(120deg, var(--text-primary), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.5rem;
+}
+
+/* Enhanced navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+nav a {
+    position: relative;
+    padding: 0.5rem 1rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Enhanced cards */
+.education-card, .certification-card {
+    background: rgba(17, 34, 64, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.education-card::before, .certification-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(100, 255, 218, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.education-card:hover::before, .certification-card:hover::before {
+    opacity: 1;
+}
+
+/* Enhanced section titles */
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    background: var(--accent-color);
+}
+
+/* Glowing effect */
+.glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    filter: blur(100px);
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.glow-1 { top: -250px; right: -250px; }
+.glow-2 { bottom: -250px; left: -250px; }
+
+/* Enhanced contact section */
+.contact-card {
+    background: rgba(17, 34, 64, 0.8);
+    backdrop-filter: blur(10px);
+    animation: float 6s ease-in-out infinite;
+}
+
+.contact-icon {
+    background: linear-gradient(45deg, rgba(100, 255, 218, 0.1), rgba(100, 255, 218, 0.2));
+}
+
+/* Scroll reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: rgba(17, 34, 64, 0.7);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+        }
+
+        .project-card h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        .image-slider {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 16px;
+    background: rgba(17, 34, 64, 0.7);
+    padding: 1rem;
+}
+
+.slider-container {
+    position: relative;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 100, 100, 0);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.slider-button:hover {
+    background: rgba(100, 255, 218, 0.2);
+    transform: translateY(-50%) scale(1.1);
+    border-color: var(--accent-color);
+}
+
+.prev {
+    left: 1rem;
+}
+
+.next {
+    right: 1rem;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(100, 255, 218, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: var(--accent-color);
+    transform: scale(1.2);
+}
+
+/* Add hover pause */
+.image-slider:hover .slider-button {
+    opacity: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .slide {
+        height: 300px;
+    }
+
+    .slider-button {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: gap 0.3s ease;
+}
+
+.contact-link:hover {
+    gap: 1rem;
+}
+
+.contact-link i {
+    font-size: 0.9rem;
+}
+
+    </style>
+
+
+<script>
+    class ImageSlider {
+        constructor(sliderElement) {
+            this.slider = sliderElement;
+            this.track = this.slider.querySelector('.slider-track');
+            this.slides = [...this.track.querySelectorAll('.slide')];
+            this.nextButton = this.slider.querySelector('.next');
+            this.prevButton = this.slider.querySelector('.prev');
+            this.dotsContainer = this.slider.querySelector('.slider-dots');
+            
+            this.currentIndex = 0;
+            this.slidesLength = this.slides.length;
+            
+            this.init();
+        }
+    
+        init() {
+            // Create dots
+            this.createDots();
+            
+            // Add event listeners
+            this.nextButton.addEventListener('click', () => this.next());
+            this.prevButton.addEventListener('click', () => this.prev());
+            
+            // Optional: Add keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') this.next();
+                if (e.key === 'ArrowLeft') this.prev();
+            });
+    
+            // Optional: Add touch support
+            let touchStartX = 0;
+            let touchEndX = 0;
+    
+            this.slider.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+    
+            this.slider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchStartX - touchEndX > 50) this.next();
+                if (touchStartX - touchEndX < -50) this.prev();
+            });
+    
+            // Set initial state
+            this.updateSlider();
+        }
+    
+        createDots() {
+            for (let i = 0; i < this.slidesLength; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => this.goToSlide(i));
+                this.dotsContainer.appendChild(dot);
+            }
+        }
+    
+        next() {
+            this.currentIndex = (this.currentIndex + 1) % this.slidesLength;
+            this.updateSlider();
+        }
+    
+        prev() {
+            this.currentIndex = (this.currentIndex - 1 + this.slidesLength) % this.slidesLength;
+            this.updateSlider();
+        }
+    
+        goToSlide(index) {
+            this.currentIndex = index;
+            this.updateSlider();
+        }
+    
+        updateSlider() {
+            // Update track position
+            this.track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+            
+            // Update dots
+            const dots = [...this.dotsContainer.children];
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === this.currentIndex);
+            });
+    
+            // Update buttons visibility
+            this.prevButton.style.opacity = this.currentIndex === 0 ? '0.5' : '1';
+            this.nextButton.style.opacity = this.currentIndex === this.slidesLength - 1 ? '0.5' : '1';
+        }
+    }
+    
+    // Initialize the slider
+    document.addEventListener('DOMContentLoaded', () => {
+        const slider = new ImageSlider(document.querySelector('.image-slider'));
+    });
+
+    
+    </script>
+
+
+</head>
+<body>
+    <header>
+        
+        <nav>
+            <a href="./">Home</a>
+            <a href="./about" class="active">About</a>
+            <a href="./projects">Projects</a>
+         </nav>
+    </header>
+
+    <div class="container">
+        <section>
+            <div class="skills-section">
+                <div class="section-title">Research Interests</div>
+                <div class="research-interest-grid">
+                    <div class="research-interest-tag">Quantum Information Processing</div>
+                    <div class="research-interest-tag">Quantum Computing</div>
+                    <div class="research-interest-tag">Quantum Materials</div>
+                    <div class="research-interest-tag">Superconducting Qubits</div>
+                    <div class="research-interest-tag">Neutral Atoms as Qubits</div>
+                    <div class="research-interest-tag">Quantum Condensed Matter Physics</div>
+                    <div class="research-interest-tag">Machine Learning For Quantum</div>
+                                    
+                </div>
+            </div>
+        </section>
+
+                <!-- Rest of the content structure remains the same but with enhanced styling -->
+        <!-- Add your sections here using the new card and grid styles -->
+    </div>
+    <div class="container">
+    <section id="training">
+        <h2 class="section-title">Training Programs Attended</h2>
+        <div>
+        <div class="contact-card">
+            <div class="date">10/2023</div>
+            <h3>Classiq Quest Bootcamp 2023</h3>
+            <p>Department of Electrical Engineering, IIT Indore</p>
+            <p>Completed the Classiq Quest Bootcamp 2023 earning Quantum Developer Certification which focused on
+                quantum algorithm design with the Classiq Platform.
+                </p>
+
+                <a href = "https://drive.google.com/file/d/1WyAwbdjmp45_1O5q5ZmSOIbWK4DgRBXq/view" class="contact-link">Show Certificate 
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+        </div>
+        <div><br></div>
+
+        <div class="contact-card">
+            <div class="date">07/2023 - 08/2023</div>
+            <h3>Womanium Global Quantum and Entrepreneurship Program 2023</h3>
+            <p>Completed an intensive summer training program in Quantum Technologies.</p>
+            <p>Modules included Quantum Computing and Programming, Quantum Key Distribution,
+                 Quantum Sensing, Quantum Software and Hardware (with industry bootcamps and virtual lab tours), and Quantum Error Correction.
+                </p>
+
+                <a href = "https://drive.google.com/file/d/1FDNl1xTood1FDH3Yy3kMDzup7tHhS4yI/view" class="contact-link">Show Certificate 
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+        </div>
+    </div>
+        <!-- Add other experiences similarly -->
+    </section>
+    </div>
+
+    <div class="container">
+        <section id="Workshops">
+            <h2 class="section-title">Various Other Activities</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>Qiskit Global Summer School 2023</h3>
+                    <p></p>
+                    <a href ="https://www.credly.com/badges/fa255c73-65f1-493d-a6ba-8e98464e7ea6/public_url" class="contact-link">View Certificate
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Quantum Information and Quantum Technology-2023 </h3>
+                    <p>Participated in Quantum Information and Quantum Technology 2023, the fourth in a summer workshop series at IISER
+                        Kolkata.</p>
+                    <a href ="https://drive.google.com/file/d/1K_LhsO9j4uCLB-PnIs4M7-sazuayLvP5/view" class="contact-link">View Certificate
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <h3>IBM Quantum Challenge Spring 2023</h3>
+                    <p>Completed IBM Quantum Challenge Spring 2023, consisting of 5 labs, focusing on dynamic circuits</p>
+                    <a href ="https://drive.google.com/file/d/11Tm1wlccWCcOn09ex0EgK39q6J5idBsp/view" class="contact-link">View Certificate
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Intro to Programming with Neutral Atoms</h3>
+                    <p></p>
+                    <a href ="https://drive.google.com/file/d/1a2KkrijJdL0GrETD2-W81kv-6ZEj7DVx/view" class="contact-link">View Certificate
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+      
+    <div>
+        <footer>
+            <p>&copy; 2025 Tanmoy Nandi. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+<script>
+    // Scroll reveal animation
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        
+        reveals.forEach(element => {
+            var windowHeight = window.innerHeight;
+            var elementTop = element.getBoundingClientRect().top;
+            var elementVisible = 150;
+            
+            if (elementTop < windowHeight - elementVisible) {
+                element.classList.add("active");
+            }
+        });
+    }
+    
+    window.addEventListener("scroll", reveal);
+    
+    // Add reveal class to sections
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('reveal');
+    });
+    
+    // Cursor glow effect
+    document.addEventListener('mousemove', (e) => {
+        const glow = document.querySelector('.glow-1');
+        glow.style.left = e.pageX + 'px';
+        glow.style.top = e.pageY + 'px';
+    });
+    </script>
+</html> 
